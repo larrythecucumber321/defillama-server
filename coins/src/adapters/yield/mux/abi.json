@@ -1,0 +1,149 @@
+{
+  "getAllAssetInfo": {
+    "inputs": [],
+    "name": "getAllAssetInfo",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes32", "name": "symbol", "type": "bytes32" },
+          {
+            "internalType": "address",
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          { "internalType": "uint8", "name": "id", "type": "uint8" },
+          { "internalType": "uint8", "name": "decimals", "type": "uint8" },
+          { "internalType": "uint56", "name": "flags", "type": "uint56" },
+          {
+            "internalType": "uint24",
+            "name": "_flagsPadding",
+            "type": "uint24"
+          },
+          {
+            "internalType": "uint32",
+            "name": "initialMarginRate",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "maintenanceMarginRate",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "minProfitRate",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "minProfitTime",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "positionFeeRate",
+            "type": "uint32"
+          },
+          {
+            "internalType": "address",
+            "name": "referenceOracle",
+            "type": "address"
+          },
+          {
+            "internalType": "uint32",
+            "name": "referenceDeviation",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint8",
+            "name": "referenceOracleType",
+            "type": "uint8"
+          },
+          { "internalType": "uint32", "name": "halfSpread", "type": "uint32" },
+          { "internalType": "uint96", "name": "credit", "type": "uint96" },
+          {
+            "internalType": "uint128",
+            "name": "_reserved2",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint96",
+            "name": "collectedFee",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint32",
+            "name": "liquidationFeeRate",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint96",
+            "name": "spotLiquidity",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "maxLongPositionSize",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "totalLongPosition",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "averageLongPrice",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "maxShortPositionSize",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "totalShortPosition",
+            "type": "uint96"
+          },
+          {
+            "internalType": "uint96",
+            "name": "averageShortPrice",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "muxTokenAddress",
+            "type": "address"
+          },
+          { "internalType": "uint32", "name": "spotWeight", "type": "uint32" },
+          {
+            "internalType": "uint32",
+            "name": "longFundingBaseRate8H",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "longFundingLimitRate8H",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint128",
+            "name": "longCumulativeFundingRate",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint128",
+            "name": "shortCumulativeFunding",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct Asset[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}
