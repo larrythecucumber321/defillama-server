@@ -4,7 +4,6 @@ import { ChainApi } from "@defillama/sdk";
 import { getApi } from "../../utils/sdk";
 import { CoinData, Write } from "../../utils/dbInterfaces";
 import { wrappedGasTokens } from "../../utils/gasTokens";
-import { CallsParams } from "@defillama/sdk/build/types";
 import {
   addToDBWritesList,
   getTokenAndRedirectData,
@@ -41,7 +40,7 @@ async function getTokenPrices(
     ),
   ] as string[];
 
-  const [poolBalances, tokenData, lpInfo] = await Promise.all([
+  const [poolBalances, tokenData, lpInfo, nonCirculating] = await Promise.all([
     api.multiCall({
       calls: assetAddresses.map((target: any) => ({
         target,
@@ -54,6 +53,14 @@ async function getTokenPrices(
       withSupply: true,
       timestamp,
     }),
+    api.multiCall({
+      target: contracts.MUXLP,
+      calls: contracts.nonCirculating.map((params: string) => ({
+        target: contracts.MUXLP,
+        params,
+      })),
+      abi: "erc20:balanceOf",
+    }),
   ]);
 
   let totalValue: number = 0;
@@ -64,8 +71,15 @@ async function getTokenPrices(
     totalValue += assetValue;
   });
 
-  const price =
-    totalValue / (lpInfo.supplies[0].output / 10 ** lpInfo.decimals[0].output);
+  const totalNonCirculating = nonCirculating.reduce(
+    (p: number, c: number) => Number(p) + Number(c),
+    0,
+  );
+  const circulatingSupply =
+    (lpInfo.supplies[0].output - totalNonCirculating) /
+    10 ** lpInfo.decimals[0].output;
+  const price = totalValue / circulatingSupply;
+
   addToDBWritesList(
     writes,
     chain,
@@ -77,6 +91,7 @@ async function getTokenPrices(
     "mux",
     1,
   );
+
   return writes;
 }
 mux(); // ts-node coins/src/adapters/yield/mux/index.ts

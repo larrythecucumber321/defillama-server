@@ -2,6 +2,11 @@
   "arbitrum": {
     "pool": "0x3e0199792Ce69DC29A0a36146bFa68bd7C8D6633",
     "gasTokenDummy": "0x0000000000000000000000000000000000000000",
-    "MUXLP": "0x7CbaF5a14D953fF896E5B3312031515c858737C8"
+    "MUXLP": "0x7CbaF5a14D953fF896E5B3312031515c858737C8",
+    "nonCirculating": [
+      "0xc2d28778447b1b0b2ae3ad17dc6616b546fbbebb",
+      "0xea4b1b0aa3c110c55f650d28159ce4ad43a4a58b",
+      "0x3e0199792ce69dc29a0a36146bfa68bd7c8d6633"
+    ]
   }
 }
